@@ -3,5 +3,4 @@
 
 CMakeFiles/TPRO.dir/main.c.obj: \
  ../PrimAdja.h \
- ../kruskalLc.h \
  ../main.c

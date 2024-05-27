@@ -8,7 +8,7 @@
 #include <limits.h>
 #include <stdbool.h>
 
-#define V 5
+#define V 9
 
 int minKey(int key[], bool mstSet[]) {
     int min = INT_MAX, min_index;
