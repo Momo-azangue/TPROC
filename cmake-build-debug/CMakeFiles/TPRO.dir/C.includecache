@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/azang/CLionProjects/TPRO/kruskalLc.h
+
+C:/Users/azang/CLionProjects/TPRO/main.c
+stdio.h
+-
+stdlib.h
+-
+kruskalLc.h
+C:/Users/azang/CLionProjects/TPRO/kruskalLc.h
+

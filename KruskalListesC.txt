@@ -1,0 +1,60 @@
+voici les exemples utilisés pour le kruskal en listes chainées
+
+
+ /** int V = 4; // Nombre de sommets dans le graphe
+    int E = 5; // Nombre d'arêtes dans le graphe
+    Graph* graph = CreateGraph(V, E);
+
+    // ajouter des arêtes au graphe
+    graph->edges[0].src = 0;
+    graph->edges[0].dest = 1;
+    graph->edges[0].weight = 10;
+
+    graph->edges[1].src = 0;
+    graph->edges[1].dest = 2;
+    graph->edges[1].weight = 6;
+
+    graph->edges[2].src = 0;
+    graph->edges[2].dest = 3;
+    graph->edges[2].weight = 5;
+
+    graph->edges[3].src = 1;
+    graph->edges[3].dest = 3;
+    graph->edges[3].weight = 15;
+
+    graph->edges[4].src = 2;
+    graph->edges[4].dest = 3;
+    graph->edges[4].weight = 4;
+
+    KruskalAlgo(graph);
+
+    free(graph->edges);
+    free(graph);
+
+    int V = 9; // Nombre de sommets dans le graphe
+    int E = 14; // Nombre d'arêtes dans le graphe
+    Graph* graph = CreateGraph(V, E);
+
+    // Ajouter des arêtes au graphe
+    graph->edges[0].src = 0; graph->edges[0].dest = 1; graph->edges[0].weight = 4;
+    graph->edges[1].src = 0; graph->edges[1].dest = 7; graph->edges[1].weight = 8;
+    graph->edges[2].src = 1; graph->edges[2].dest = 7; graph->edges[2].weight = 11;
+    graph->edges[3].src = 1; graph->edges[3].dest = 2; graph->edges[3].weight = 8;
+    graph->edges[4].src = 2; graph->edges[4].dest = 8; graph->edges[4].weight = 2;
+    graph->edges[5].src = 2; graph->edges[5].dest = 5; graph->edges[5].weight = 4;
+    graph->edges[6].src = 2; graph->edges[6].dest = 3; graph->edges[6].weight = 7;
+    graph->edges[7].src = 3; graph->edges[7].dest = 4; graph->edges[7].weight = 9;
+    graph->edges[8].src = 4; graph->edges[8].dest = 5; graph->edges[8].weight = 10;
+    graph->edges[9].src = 5; graph->edges[9].dest = 6; graph->edges[9].weight = 2;
+    graph->edges[10].src = 6; graph->edges[10].dest = 7; graph->edges[10].weight = 1;
+    graph->edges[11].src = 6; graph->edges[11].dest = 8; graph->edges[11].weight = 6;
+    graph->edges[12].src = 7; graph->edges[12].dest = 8; graph->edges[12].weight = 7;
+    graph->edges[13].src = 3; graph->edges[13].dest = 2; graph->edges[13].weight = 8;
+
+    KruskalAlgo(graph);
+
+    free(graph->edges);
+    free(graph);**/
+
+
+
