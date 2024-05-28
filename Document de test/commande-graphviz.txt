@@ -1,0 +1,21 @@
+
+
+
+
+
+
+
+
+    generateDotFileForMatrix(graph, "C:\\Users\\azang\\CLionProjects\\TPRO\\graph-Matrix.dot");
+
+
+dot -Tpng C:/Users/azang/CLionProjects/TPRO/graph-Matrix.dot -o C:/Users/azang/CLionProjects/TPRO/graph-Matrix.png
+dot -Tpng C:/Users/azang/CLionProjects/TPRO/graph-Matrix.dot -o C:/Users/azang/CLionProjects/TPRO/graph-Matrix.png
+dot -Tpng C:/Users/azang/CLionProjects/TPRO/graph.dot -o C:/Users/azang/CLionProjects/TPRO/graph.png
+
+
+ generateDotFile(graph, "graph.dot");
+
+  generateDotFileForMatrix(graph, "graph_matrix.dot");
+
+   generateDotFileForList(graph, "graph_list.dot");

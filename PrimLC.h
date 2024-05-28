@@ -4,8 +4,11 @@
 
 #ifndef TPRO_PRIMLC_H
 #define TPRO_PRIMLC_H
+#include <stdio.h>
 #include <limits.h>
 #include <stdbool.h>
+#include <stdlib.h>
+
 typedef struct Node {
     int dest;
     int weight;
@@ -73,6 +76,32 @@ void printMST(int parent[], int V, Graph* graph) {
     }
 }
 
+
+void generateDotFileForPrimMST(int parent[], int V, Graph* graph, const char* filename) {
+    FILE* file = fopen(filename, "w");
+    if (file == NULL) {
+        printf("Erreur d'ouverture du fichier.\n");
+        return;
+    }
+
+    fprintf(file, "graph G {\n");
+    for (int i = 1; i < V; ++i) {
+        Node* temp = graph->array[i].head;
+        while (temp) {
+            if (temp->dest == parent[i]) {
+                fprintf(file, "    %d -- %d [label=%d];\n", parent[i], i, temp->weight);
+                break;
+            }
+            temp = temp->next;
+        }
+    }
+    fprintf(file, "}\n");
+
+    fclose(file);
+    printf("Fichier DOT pour Prim MST généré : %s\n", filename);
+}
+
+
 void primMST(Graph* graph) {
     int V = graph->V;
     int parent[V];
@@ -101,9 +130,7 @@ void primMST(Graph* graph) {
     }
 
     printMST(parent, V, graph);
+    generateDotFileForPrimMST(parent, V, graph, "C:\\Users\\azang\\CLionProjects\\TPRO\\prim_liste.dot");
 }
-
-
-
 
 #endif //TPRO_PRIMLC_H

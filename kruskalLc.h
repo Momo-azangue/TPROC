@@ -4,7 +4,8 @@
 
 #ifndef TPRO_KRUSKALLC_H
 #define TPRO_KRUSKALLC_H
-
+#include <stdio.h>
+#include <stdlib.h>
 // Structure pour représenter une arête
 typedef struct {
     int src, dest, weight;
@@ -110,5 +111,22 @@ void KruskalAlgo(Graph* graph) {
 qsort: La fonction standard de C utilisée pour trier les arêtes en fonction de leur poids.
   ****/
 
+// Fonction pour générer un fichier DOT
+void generateDotFile(Graph* graph, const char* filename) {
+    FILE* file = fopen(filename, "w");
+    if (file == NULL) {
+        printf("Erreur d'ouverture du fichier.\n");
+        return;
+    }
+
+    fprintf(file, "graph G {\n");
+    for (int i = 0; i < graph->E; ++i) {
+        fprintf(file, "    %d -- %d [label=%d];\n", graph->edges[i].src, graph->edges[i].dest, graph->edges[i].weight);
+    }
+    fprintf(file, "}\n");
+
+    fclose(file);
+    printf("Fichier DOT est genere  : %s\n", filename);
+}
 
 #endif //TPRO_KRUSKALLC_H

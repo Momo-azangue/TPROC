@@ -5,8 +5,12 @@
 #ifndef TPRO_DJISKTRALC_H
 #define TPRO_DJISKTRALC_H
 
+
+
 #include <limits.h>
 #include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 typedef struct Node {
     int dest;
@@ -68,13 +72,35 @@ void printSolution(int dist[], int n) {
     }
 }
 
+void generateDotFileForDijkstra(int parent[], int dist[], int V, Graph* graph, const char* filename) {
+    FILE* file = fopen(filename, "w");
+    if (file == NULL) {
+        printf("Erreur d'ouverture du fichier.\n");
+        return;
+    }
+
+    fprintf(file, "digraph G {\n");
+    for (int i = 0; i < V; ++i) {
+        if (parent[i] != -1) {
+            fprintf(file, "    %d -> %d [label=%d];\n", parent[i], i, dist[i]);
+        }
+    }
+    fprintf(file, "}\n");
+
+    fclose(file);
+    printf("Fichier DOT pour Dijkstra généré : %s\n", filename);
+}
+
 void dijkstra(Graph* graph, int src) {
     int V = graph->V;
     int dist[V];
     bool sptSet[V];
+    int parent[V];
 
     for (int i = 0; i < V; i++) {
-        dist[i] = INT_MAX, sptSet[i] = false;
+        dist[i] = INT_MAX;
+        sptSet[i] = false;
+        parent[i] = -1;
     }
 
     dist[src] = 0;
@@ -88,11 +114,15 @@ void dijkstra(Graph* graph, int src) {
             int v = temp->dest;
             if (!sptSet[v] && dist[u] != INT_MAX && dist[u] + temp->weight < dist[v]) {
                 dist[v] = dist[u] + temp->weight;
+                parent[v] = u;
             }
             temp = temp->next;
         }
     }
 
     printSolution(dist, V);
+    generateDotFileForDijkstra(parent, dist, V, graph, "C:\\Users\\azang\\CLionProjects\\TPRO\\Dot\\dijkstra.dot");
 }
+
+
 #endif //TPRO_DJISKTRALC_H

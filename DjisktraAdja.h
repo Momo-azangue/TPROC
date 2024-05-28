@@ -6,8 +6,8 @@
 #define TPRO_DJISKTRAADJA_H
 #include <stdbool.h>
 #include <limits.h>
-
-#define V 9
+#include <stdlib.h>
+#define  V 9
 
 int minDistance(int dist[], bool sptSet[]) {
     int min = INT_MAX, min_index;
@@ -26,12 +26,35 @@ void printSolution(int dist[], int n) {
     }
 }
 
+void generateDotFileForDijkstraAdjacency(int parent[], int dist[], int K, int graph[V][V], const char* filename) {
+FILE* file = fopen(filename, "w");
+if (file == NULL) {
+printf("Erreur d'ouverture du fichier.\n");
+return;
+}
+
+fprintf(file, "digraph G {\n");
+for (int i = 0; i < V; ++i) {
+if (parent[i] != -1) {
+fprintf(file, "    %d -> %d [label=%d];\n", parent[i], i, graph[parent[i]][i]);
+}
+}
+fprintf(file, "}\n");
+
+fclose(file);
+printf("Fichier DOT pour Dijkstra généré : %s\n", filename);
+}
+
+
 void dijkstra(int graph[V][V], int src) {
     int dist[V];
     bool sptSet[V];
+    int parent[V];
 
     for (int i = 0; i < V; i++) {
-        dist[i] = INT_MAX, sptSet[i] = false;
+        dist[i] = INT_MAX;
+        sptSet[i] = false;
+        parent[i] = -1;
     }
 
     dist[src] = 0;
@@ -43,11 +66,12 @@ void dijkstra(int graph[V][V], int src) {
         for (int v = 0; v < V; v++) {
             if (!sptSet[v] && graph[u][v] && dist[u] != INT_MAX && dist[u] + graph[u][v] < dist[v]) {
                 dist[v] = dist[u] + graph[u][v];
+                parent[v] = u;
             }
         }
     }
 
     printSolution(dist, V);
+    generateDotFileForDijkstraAdjacency(parent, dist, V, graph, "C:\\Users\\azang\\CLionProjects\\TPRO\\Dot\\dijkstra_adjacency.dot");
 }
-
 #endif //TPRO_DJISKTRAADJA_H

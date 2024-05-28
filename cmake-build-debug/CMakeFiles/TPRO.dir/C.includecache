@@ -6,6 +6,14 @@
 
 #IncludeRegexTransform: 
 
+C:/Users/azang/CLionProjects/TPRO/DjisktraAdja.h
+stdbool.h
+-
+limits.h
+-
+stdlib.h
+-
+
 C:/Users/azang/CLionProjects/TPRO/main.c
 stdio.h
 -
@@ -15,4 +23,6 @@ limits.h
 -
 stdbool.h
 -
+DjisktraAdja.h
+C:/Users/azang/CLionProjects/TPRO/DjisktraAdja.h
 
